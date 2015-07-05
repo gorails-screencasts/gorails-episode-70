@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Events</h1>
+
+<% @events.each do |event| %>
+  <% if lookup_context.template_exists?(event.action, "events/activities", true) %>
+    <%= render partial: "events/activities/#{event.action}", locals: {event: event} %>
+  <% end %>
+<% end %>
+
+<br>
+
+<%= link_to 'New Event', new_event_path %>
